@@ -42,7 +42,7 @@ header {
   display: block;
   font-size: 1.5rem;
   font-weight: bold;
-  color:rgb(175, 30, 30);
+  color: rgb(175, 30, 30);
 }
 
 .question {
@@ -60,10 +60,23 @@ header {
 
 .options {
   background-color: rgba(0, 0, 0, 0.2);
-  height: 100%;  
+  height: 100%;
 }
 
-.options img{
-  padding: 1rem;
-  margin-bottom: 0.75rem;
+.options {
+  align-items: center;
+}
+
+.options img {
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
+  max-width: 7rem;
+  height: auto;
+}
+
+
+@media (min-width: 600px) {
+  .main-container {
+    width: 600px;
+  }
 }
