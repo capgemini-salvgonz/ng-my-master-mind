@@ -1,4 +1,4 @@
-<div class="container welcome-container">
+<div class="container welcome-container" *ngIf="statistics===null; else showBoard">
   <div class="row">
     <div class="col">
       <label for="" class="welcome-message">¿Cuál es tu nombre?</label>
@@ -6,7 +6,27 @@
   </div>
 
   <div class="row">
-    <input type="text" class="form-control input-name" />
-    <button type="button" class="btn btn-primary">Entrar</button>
+    <div class="col">
+      <form #f="ngForm" (ngSubmit)="onClickEnter()" novalidate>
+        <input type="text" class="form-control input-name" [(ngModel)]="name" name="name" />
+        <button type="submit" class="btn btn-primary enter-button">Entrar</button>
+      </form>
+    </div>
   </div>
 </div>
+
+<ng-template #showBoard>
+  <header>
+    <div class="container game-statistics">
+      <div class="row">
+        <div class="col">{{statistics?.name}}</div>
+        <div class="col">Ganaste: {{statistics?.won}} - Perdiste: {{statistics?.lost}}</div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col game-title text-center">MY MASTERMIND</div>
+    </div>
+  </div>
+</ng-template>
