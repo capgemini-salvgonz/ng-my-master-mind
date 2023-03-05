@@ -44,3 +44,26 @@ header {
   font-weight: bold;
   color:rgb(175, 30, 30);
 }
+
+.question {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.col-board {
+  width: 80%;
+}
+
+.col-option {
+  width: 20%;
+}
+
+.options {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;  
+}
+
+.options img{
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
