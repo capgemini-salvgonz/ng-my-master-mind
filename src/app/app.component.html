@@ -1,3 +1,6 @@
+<!-- 
+  WELCOME SECTION
+-->
 <div class="container welcome-container" *ngIf="statistics===null; else showBoard">
   <div class="row">
     <div class="col">
@@ -14,8 +17,13 @@
     </div>
   </div>
 </div>
+<!--END OF WELCOME SECTION-->
+
 
 <ng-template #showBoard>
+  <!--
+    Show statistics
+  -->
   <header>
     <div class="container game-statistics">
       <div class="row">
@@ -24,9 +32,47 @@
       </div>
     </div>
   </header>
+
   <div class="container">
     <div class="row">
       <div class="col game-title text-center">MY MASTERMIND</div>
     </div>
+
+    <div class="row mt-4">
+
+      <!-- 
+        Board section 
+      -->
+      <div class="col-board">
+        <div class="container">
+          <div class="row">
+            <div class="col border rounded border-dark p-2 text-center fw-bold">PASSWORD</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+        Option section 
+      -->
+      <div class="col-option">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center fw-bold">
+              <button type="button" class="btn btn-primary w-100 question">?</button>
+            </div>
+          </div>
+
+          <div class="row options mt-4  rounded-4">
+            <img src="assets/red.png" alt="red" />
+            <img src="assets/blue.png" alt="red" />
+            <img src="assets/yellow.png" alt="red" />
+            <img src="assets/green.png" alt="red" />
+            <img src="assets/orange.png" alt="red" />
+            <img src="assets/gray.png" alt="red" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </ng-template>
