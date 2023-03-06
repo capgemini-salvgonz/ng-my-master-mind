@@ -61,15 +61,13 @@ header {
 .options {
   background-color: rgba(0, 0, 0, 0.2);
   height: 100%;
-}
-
-.options {
   align-items: center;
+  width: 45px;
 }
 
 .options img {
   padding: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
   max-width: 3rem;
   height: auto;
   margin-left: auto;
@@ -97,9 +95,9 @@ header {
 }
 
 .img-clue {
-  width: 2.3rem;
+  width: 1.75rem;
   height: auto;
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
 }
 
 .clue-3 {
@@ -110,5 +108,11 @@ header {
 @media (min-width: 600px) {
   .main-container {
     width: 600px;
+  }
+
+  .img-clue {
+    width: 2.5rem;
+    height: auto;
+    margin-right: 0.3rem;
   }
 }
