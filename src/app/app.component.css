@@ -70,10 +70,42 @@ header {
 .options img {
   padding: 0.25rem;
   margin-bottom: 0.25rem;
-  max-width: 7rem;
+  max-width: 3rem;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.clue-table {
+  width: 100%;
+  border: 1px black;
+  border-radius: 0.25rem;
+}
+
+.clue-table .btn {
+  font-size: 0.70rem;
+}
+
+.clue-1 {
+  width: 5%;
+  background-color: rgba(167, 13, 13, 0.10);
+}
+
+.clue-2 {
+  width: 75%;
+  background-color: rgba(167, 13, 13, 0.2);
+}
+
+.img-clue {
+  width: 2.3rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.clue-3 {
+  width: 20%;
+  background-color: rgba(167, 13, 13, 0.25);
+}
 
 @media (min-width: 600px) {
   .main-container {
