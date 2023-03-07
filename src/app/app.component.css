@@ -30,7 +30,7 @@
 }
 
 .game-statistics {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -48,6 +48,7 @@ header {
 .question {
   font-size: 1.5rem;
   font-weight: bold;
+  width: 3rem;
 }
 
 .col-board {
@@ -94,15 +95,21 @@ header {
   background-color: rgba(167, 13, 13, 0.2);
 }
 
-.img-clue {
-  width: 1.75rem;
-  height: auto;
-  margin-right: 0.3rem;
-}
-
 .clue-3 {
   width: 20%;
   background-color: rgba(167, 13, 13, 0.25);
+}
+
+.img-password {
+  width: 1.5em;
+  height: auto;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.img-clue {
+  width: 0.5rem;
+  margin-right: 0.1rem;
 }
 
 @media (min-width: 600px) {
@@ -110,9 +117,10 @@ header {
     width: 600px;
   }
 
-  .img-clue {
-    width: 2.5rem;
+  .img-password {
+    width: 2.5em;
     height: auto;
-    margin-right: 0.3rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
   }
 }
