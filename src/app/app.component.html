@@ -35,10 +35,10 @@
 
   <div class="container main-container">
     <div class="row">
-      <div class="col game-title text-center">MY MASTERMIND</div>
+      <div class="col game-title text-center">MASTERMIND</div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
 
       <!-- 
         Board section 
@@ -46,9 +46,9 @@
       <div class="col-board">
         <div class="container">
           <div class="row">
-            <div class="col border rounded border-dark p-2 text-center fw-bold">ADIVINA EL PASSWORD</div>
+            <div class="col text-center fw-bold btn btn-dark" (click)="onClickNewPassword()">ADIVINA EL PASSWORD</div>
           </div>
-          <div class="row mt-4">
+          <div class="row mt-2">
             <div class="col p-0 text-center mt-2">
 
               <table class="clue-table">
@@ -58,25 +58,45 @@
                   <th class="clue-3">Pistas</th>
                 </tr>
 
-                <tr class="border border-white">
-                  <td><button class="btn btn-primary btn-sm">></button></td>
-                  <td class="mx-auto">
-                    <img class="img-password" src="assets/alpha.png" alt="alpha" (click)="onClickAnswer(0)"/>
-                    <img class="img-password" src="assets/alpha.png" alt="alpha" (click)="onClickAnswer(1)"/>
-                    <img class="img-password" src="assets/alpha.png" alt="alpha" (click)="onClickAnswer(2)"/>
-                    <img class="img-password" src="assets/alpha.png" alt="alpha" (click)="onClickAnswer(3)"/>
-                    <img class="img-password" src="assets/alpha.png" alt="alpha" (click)="onClickAnswer(4)"/>
+                <ng-template ngFor [ngForOf]="masterMind.passwordClues" let-item let-i="index">
+                  <tr class="border border-white">
+                    <td>
+                      <button class="btn btn-primary btn-sm" *ngIf="masterMind.attempt === i"
+                        (click)="onClickCheckPassword()">></button>
+                    </td>
+                    <td class="mx-auto">
+                      <img class="img-password" src="assets/{{item.selection[0]}}.png" alt="alpha"
+                        (click)="onClickAnswer(i, 0)" />
+                      <img class="img-password" src="assets/{{item.selection[1]}}.png" alt="alpha"
+                        (click)="onClickAnswer(i, 1)" />
+                      <img class="img-password" src="assets/{{item.selection[2]}}.png" alt="alpha"
+                        (click)="onClickAnswer(i, 2)" />
+                      <img class="img-password" src="assets/{{item.selection[3]}}.png" alt="alpha"
+                        (click)="onClickAnswer(i, 3)" />
+                      <img class="img-password" src="assets/{{item.selection[4]}}.png" alt="alpha"
+                        (click)="onClickAnswer(i, 4)" />
+                    </td>
+                    <td class="mx-auto">
+                      <img class="img-clue rounded-circle" src="assets/{{item.clues[0]}}.png" />
+                      <img class="img-clue rounded-circle" src="assets/{{item.clues[1]}}.png" />
+                      <img class="img-clue rounded-circle" src="assets/{{item.clues[2]}}.png" />
+                      <img class="img-clue rounded-circle" src="assets/{{item.clues[3]}}.png" />
+                      <img class="img-clue rounded-circle" src="assets/{{item.clues[4]}}.png" />
+                    </td>
+                  </tr>
+                </ng-template>
+
+                <tr>
+                  <td></td>
+                  <td class="mx-auto" *ngIf="masterMind.gameState !== 'ip'">
+                    <img class="img-password" src="assets/{{masterMind.hints[0]}}.png" />
+                    <img class="img-password" src="assets/{{masterMind.hints[1]}}.png" />
+                    <img class="img-password" src="assets/{{masterMind.hints[2]}}.png" />
+                    <img class="img-password" src="assets/{{masterMind.hints[3]}}.png" />
+                    <img class="img-password" src="assets/{{masterMind.hints[4]}}.png" />
                   </td>
-                  <td class="mx-auto">
-                    <img class="img-clue rounded-circle" src="assets/g.png" />
-                    <img class="img-clue rounded-circle" src="assets/b.png" />
-                    <img class="img-clue rounded-circle" src="assets/g.png" />
-                    <img class="img-clue rounded-circle" src="assets/y.png" />
-                    <img class="img-clue rounded-circle" src="assets/g.png" />
-                  </td>
+                  <td></td>
                 </tr>
-                
-                
 
               </table>
             </div>
@@ -95,17 +115,17 @@
             </div>
           </div>
 
-          <div class="row options mt-4  rounded-4 mx-auto">
-            <img src="assets/red.png" alt="red" (click)="onClickOption('red')"/>
-            <img src="assets/blue.png" alt="blue" (click)="onClickOption('blue')"/>
-            <img src="assets/yellow.png" alt="yellow" (click)="onClickOption('yellow')"/>
-            <img src="assets/green.png" alt="green" (click)="onClickOption('green')"/>
-            <img src="assets/orange.png" alt="orange" (click)="onClickOption('orange')"/>
-            <img src="assets/gray.png" alt="gray" (click)="onClickOption('gray')"/>
+          <div class="row options mt-2  rounded-4 mx-auto">
+            <img src="assets/red.png" alt="red" (click)="onClickOption('red')" />
+            <img src="assets/blue.png" alt="blue" (click)="onClickOption('blue')" />
+            <img src="assets/yellow.png" alt="yellow" (click)="onClickOption('yellow')" />
+            <img src="assets/green.png" alt="green" (click)="onClickOption('green')" />
+            <img src="assets/orange.png" alt="orange" (click)="onClickOption('orange')" />
+            <img src="assets/gray.png" alt="gray" (click)="onClickOption('gray')" />
           </div>
 
-          <div class="row options mt-4  rounded-4 mx-auto">
-            <img  src="assets/{{optionSelected}}.png" alt={{optionSelected}} />
+          <div class="row options mt-2  rounded-4 mx-auto">
+            <img src="assets/{{optionSelected}}.png" alt={{optionSelected}} />
           </div>
         </div>
       </div>
