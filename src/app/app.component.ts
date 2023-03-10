@@ -1,10 +1,8 @@
 import { Component, Directive, Input, Output } from '@angular/core';
 import { GameStorageService } from './service/game-storage.service';
 import { GameStatistics } from './model/game.model';
+import { MasterMindService, OptionSelected } from './service/mastermind.service';
 
-type OptionSelected =
-  'red' | 'blue' | 'yellow' | 'green' |
-  'orange' | 'gray' | 'alpha';
 
 
 @Component({
@@ -13,14 +11,17 @@ type OptionSelected =
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
   title = 'My master mind';
   storage: GameStorageService;
+  masterMind: MasterMindService;
   statistics: GameStatistics | null;
   name: string = '';
   @Output() optionSelected: OptionSelected;
 
-  constructor(storage: GameStorageService) {
+  constructor(storage: GameStorageService, masterMind: MasterMindService) {
     this.storage = storage;
+    this.masterMind = masterMind;
     this.statistics = this.storage.statistics;
     this.optionSelected = 'alpha';
   }
@@ -39,7 +40,16 @@ export class AppComponent {
     this.name = '';
   }
 
-  onclickOption(option: OptionSelected): void {
+  onClickOption(option: OptionSelected): void {
     this.optionSelected = option;
+    console.log(this.masterMind);
   }
+
+  onClickAnswer(position: number) {
+    if(this.optionSelected === 'alpha'){
+      return;
+    }    
+    this.masterMind.setAnswer(position, this.optionSelected);
+  }
+  
 }
