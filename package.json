@@ -20,9 +20,11 @@
     "@angular/router": "^15.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
+    "@types/underscore": "^1.11.4",
     "bootstrap": "^5.2.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "underscore": "^1.13.6",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
