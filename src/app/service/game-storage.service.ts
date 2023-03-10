@@ -15,7 +15,7 @@ export class GameStorageService {
   /**
    * Get statistics
    */
-  get statistics(): GameStatistics | null {
+  public get statistics(): GameStatistics | null {
     return this.gameStatistics;
   }
 

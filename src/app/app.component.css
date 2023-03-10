@@ -79,10 +79,12 @@ header {
   width: 100%;
   border: 1px black;
   border-radius: 0.25rem;
+  font-size: 0.75rem;
 }
 
 .clue-table .btn {
   font-size: 0.70rem;
+  height: 1.5rem;
 }
 
 .clue-1 {
@@ -101,7 +103,7 @@ header {
 }
 
 .img-password {
-  width: 1.5em;
+  width: 2em;
   height: auto;
   margin-right: 0.25rem;
   margin-left: 0.25rem;
@@ -118,9 +120,14 @@ header {
   }
 
   .img-password {
-    width: 2.5em;
+    width: 3em;
     height: auto;
     margin-right: 0.25rem;
     margin-left: 0.25rem;
+  }
+
+  .img-clue {
+    width: 0.75rem;
+    margin-right: 0.1rem;
   }
 }
