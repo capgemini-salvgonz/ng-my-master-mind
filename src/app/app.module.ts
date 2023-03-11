@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
     NgbModule,
     FormsModule, 
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

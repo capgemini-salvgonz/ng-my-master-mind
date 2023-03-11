@@ -2,7 +2,7 @@ import { Component, Output } from '@angular/core';
 import { GameStorageService } from './service/game-storage.service';
 import { GameStatistics } from './model/game.model';
 import { MasterMindService, OptionSelected, PasswordClues } from './service/mastermind.service';
-
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -19,6 +19,28 @@ export class AppComponent {
   name: string = '';
   optionSelected: OptionSelected;
   score = 0;
+  closeResult = '';
+
+  open(content:any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 
 
   /**
@@ -27,7 +49,9 @@ export class AppComponent {
    * @param storage 
    * @param masterMind 
    */
-  constructor(storage: GameStorageService, masterMind: MasterMindService) {
+  constructor(storage: GameStorageService, masterMind: MasterMindService,
+    private modalService: NgbModal) {
+
     this.storage = storage;
     this.masterMind = masterMind;
     this.statistics = this.storage.statistics;
@@ -92,12 +116,12 @@ export class AppComponent {
 
     this.masterMind.validate();
 
-    if (this.masterMind.gameState !== 'ip') {      
+    if (this.masterMind.gameState !== 'ip') {
       if (this.masterMind.gameState === 'won') {
         this.score += 100 - (10 * this.masterMind.attempt);
       }
       this.masterMind.attempt = this.masterMind.maxAttempt;
-      this.saveStatistics({name : this.statistics?.name, won: this.score});
+      this.saveStatistics({ name: this.statistics?.name, won: this.score });
       this.showResult();
     }
   }
