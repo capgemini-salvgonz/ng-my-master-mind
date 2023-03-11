@@ -118,7 +118,7 @@ export class AppComponent {
 
     if (this.masterMind.gameState !== 'ip') {
       if (this.masterMind.gameState === 'won') {
-        this.score += 100 - (10 * this.masterMind.attempt);
+        this.score += 110 - (10 * this.masterMind.attempt);
       }
       this.masterMind.attempt = this.masterMind.maxAttempt;
       this.saveStatistics({ name: this.statistics?.name, won: this.score });

@@ -38,6 +38,9 @@ export class GameStorageService {
     localStorage.setItem(this.storageKey, JSON.stringify(statistics));
   }
 
+  /**
+   * Delete data from storage
+   */
   removeStorage() {
     localStorage.removeItem(this.storageKey);
   }
@@ -53,35 +56,5 @@ export class GameStorageService {
       throw new Error('No values on local storage');
     }
     return JSON.parse(storage);
-  }
-
-  /**
-   * 
-   * Update game statistics
-   * 
-   * @param property of statistics for update
-   */
-  async updateStatistics(property : 'won' | 'lost'){
-    this.retrieveStatistics()
-    .then( statistics => {
-      statistics[property] += 1;
-      this.saveStatistics(statistics);
-    }).catch(console.error);
-  }
-
-  /**
-   * Update won game
-   * 
-   * @returns
-   */
-  async addOneWon() {
-    this.updateStatistics('won');
-  }
-
-  /**
-   * Update lost games
-   */
-  async addOneLost() {
-    this.updateStatistics('lost');
   }
 }
