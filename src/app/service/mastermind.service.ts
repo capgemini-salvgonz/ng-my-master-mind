@@ -16,7 +16,7 @@ export class MasterMindService {
   private password: string = '';
   private options: string[];
   public hints: string[] = [];
-  private readonly maxAttempt: number = 10;
+  public readonly maxAttempt: number = 10;
   public attempt: number = 1;
   public passwordClues: PasswordClues[] = [];
   public gameState: 'lost' | 'won' | 'ip' = 'ip';

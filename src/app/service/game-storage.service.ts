@@ -38,6 +38,10 @@ export class GameStorageService {
     localStorage.setItem(this.storageKey, JSON.stringify(statistics));
   }
 
+  removeStorage() {
+    localStorage.removeItem(this.storageKey);
+  }
+
   /**
    * Read the local storage to retrieve the game statistics
    * 

@@ -1,5 +1,5 @@
 export interface GameStatistics {
-  name: string;
+  name?: string;
   won: number;
-  lost: number;
+  lost?: number;
 };

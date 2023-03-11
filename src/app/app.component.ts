@@ -18,13 +18,29 @@ export class AppComponent {
   statistics: GameStatistics | null;
   name: string = '';
   optionSelected: OptionSelected;
+  score = 0;
 
 
+  /**
+   * Create an instance of AppComponent
+   * 
+   * @param storage 
+   * @param masterMind 
+   */
   constructor(storage: GameStorageService, masterMind: MasterMindService) {
     this.storage = storage;
     this.masterMind = masterMind;
     this.statistics = this.storage.statistics;
     this.optionSelected = 'alpha';
+    this.score = this.statistics?.won ? this.statistics.won : 0;
+  }
+
+  /**
+   * Delete storage data such as: Player name
+   */
+  resetApp() {
+    this.storage.removeStorage();
+    this.statistics = null;
   }
 
   saveStatistics(statistics: GameStatistics) {
@@ -38,8 +54,7 @@ export class AppComponent {
   onClickEnter() {
     this.saveStatistics({
       name: this.name.toUpperCase(),
-      won: 0,
-      lost: 0,
+      won: 0
     });
     this.name = '';
   }
@@ -70,27 +85,32 @@ export class AppComponent {
    * Validate password
    */
   onClickCheckPassword() {
-    if(this.masterMind.passwordClues[this.masterMind.attempt].selection.includes('alpha')
-    || this.masterMind.gameState !== 'ip'){
+    if (this.masterMind.passwordClues[this.masterMind.attempt].selection.includes('alpha')
+      || this.masterMind.gameState !== 'ip') {
       return;
     }
 
     this.masterMind.validate();
 
-    if(this.masterMind.gameState !== 'ip'){
-      this.masterMind.attempt = 10;
-      this.masterMind.gameState === 'won' ? this.storage.addOneWon() : this.storage.addOneLost();      
-      alert(this.masterMind.gameState === 'won' ? 'Ganaster!!!': 'Perdiste');
-      this.statistics = this.storage.statistics;
+    if (this.masterMind.gameState !== 'ip') {      
+      if (this.masterMind.gameState === 'won') {
+        this.score += 100 - (10 * this.masterMind.attempt);
+      }
+      this.masterMind.attempt = this.masterMind.maxAttempt;
+      this.saveStatistics({name : this.statistics?.name, won: this.score});
+      this.showResult();
     }
   }
 
+  async showResult() {
+    alert(this.masterMind.gameState === 'won' ? 'Ganaste!!!' : 'Perdiste');
+  }
 
   /**
    * Starts new game
    */
   onClickNewPassword() {
-    if(confirm('¿Desea comenzar un nuevo juego?')){
+    if (confirm('¿Desea comenzar un nuevo juego?')) {
       this.masterMind.newGame();
     }
   }

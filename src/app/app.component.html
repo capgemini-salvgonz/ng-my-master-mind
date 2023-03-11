@@ -27,8 +27,10 @@
   <header>
     <div class="container game-statistics">
       <div class="row">
-        <div class="col">{{statistics?.name}}</div>
-        <div class="col-8">Ganaste: {{statistics?.won}} - Perdiste: {{statistics?.lost}}</div>
+        <div class="col text-center fw-bold">
+          <a href="" (click)="resetApp()">[Salir]</a>
+        </div>
+        <div class="col-8">{{statistics?.name}} - Score: {{score}}</div>
       </div>
     </div>
   </header>
@@ -111,7 +113,7 @@
         <div class="container">
           <div class="row">
             <div class="col text-center fw-bold">
-              <button type="button" class="btn btn-primary question">?</button>
+              <button type="button" class="btn btn-primary question" >?</button>
             </div>
           </div>
 
