@@ -113,7 +113,7 @@
         <div class="container">
           <div class="row">
             <div class="col text-center fw-bold">
-              <button type="button" class="btn btn-primary question" >?</button>
+              <button type="button" class="btn btn-primary question" (click)="open(content)">?</button>
             </div>
           </div>
 
@@ -134,4 +134,28 @@
     </div>
   </div>
 
+</ng-template>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">¿Cómo jugar Mastermind?</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <h4>Reglas del juego.</h4>
+    <ol>
+      <li>Existe un password (código secreto) de cinco colores colocados en un orden específico.</li>
+      <li>Intenta adivinar los cinco colores que la máquina ha elegido y el orden en que están colocados.</li>
+      <li>Coloca esferas de colores en una fila sobre el tablero de descifrado para intentar adivinar el código secreto.</li>
+      <li>Al dar click sobr el botón check se proporciona información sobre cuántos colores son correctos y si están en la posición correcta
+        o no. Un círculo negro indica que el color y la posición es correcta, un círculo amarillo significa que el color es parte del código secreto pero no está en la posición correcta.
+      </li>
+      <li>Utiliza esta información para hacer nuevos intentos, ajustando tú selección de colores en
+        función de las pistas proporcionadas.</li>
+      <li>El juego continúa hasta que el logres adivinar el código correcto o hasta que se agotan las oportunidades.
+      </li>
+      <li>Da click sobre el botón de "ADIVINA EL PASSWORD" para un nuevo juego.</li>
+    </ol>
+    <h4>¡Buena suerte!</h4>
+  </div>
 </ng-template>
